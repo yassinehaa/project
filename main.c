@@ -45,7 +45,7 @@ void afficher() {
         printf("--------------------------\n");
         printf("Nom de la tache: %s\n", T[i].titre);
         printf("Description de la tache: %s\n", T[i].description);
-        printf("Echeance: %02d-%02d-%d\n", T[i].echeance.jour,T[i].echeance.mois,T[i].echeance.annee);
+        printf("Echeance: %02d-%02d-%04d\n", T[i].echeance.jour,T[i].echeance.mois,T[i].echeance.annee);
         printf("Priorite: %s\n", T[i].pr);
         printf("--------------------------\n");
     }
