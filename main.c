@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <string.h>
 
+// Définition de la structure pour la date d'échéance
 typedef struct {
     int jour, mois, annee;
 }echeance;
+// Définition de la structure pour une tâche
 typedef struct {
     char titre[100];
     char description[200];
@@ -11,9 +13,13 @@ typedef struct {
     char pr[10];
 } taches;
 
+// Tableau de tâches, capacité maximale 100
 taches T[100];
+
+// Compteur pour le nombre de tâches ajoutées
 int compteurtaches = 0;
 
+// Fonction pour ajouter une nouvelle tâche
 void ajouter() {
     printf("Entrer la tache a ajouter\n");
 
@@ -33,9 +39,11 @@ void ajouter() {
 
     printf("Priorite (high ou low): ");
     scanf("%s", T[compteurtaches].pr);
+
+     // Incrémenter le compteur de tâches
     compteurtaches++;
 }
-
+    // Fonction pour afficher toutes les tâches
 void afficher() {
     int i;
         if (compteurtaches == 0) {
@@ -50,14 +58,14 @@ void afficher() {
         printf("--------------------------\n");
     }
 }
-
+    // Fonction pour modifier une tâche
 void modifier() {
     int m;
     printf("Entrer le numero de la tache a modifier (1-%d): ", compteurtaches);
     scanf("%d", &m);
-
+// Vérifier si le numéro de tâche est valide
     if (m > 0 && m <= compteurtaches) {
-            m--;
+            m--;// Ajuster l'index car les tâches sont numérotées à partir de 1
         printf("Entrer nouveau titre: ");
         scanf(" %[^\n]", T[m].titre);
 
@@ -79,22 +87,26 @@ void modifier() {
     }
 }
 
+// Fonction pour supprimer une tâche
 void supprimer() {
     int m, i;
     printf("Entrer le numero de la tache a supprimer (1-%d): ", compteurtaches);
     scanf("%d", &m);
-    m--;
+    m--; // Ajuster l'index car les tâches sont numérotées à partir de 1
 
     if (m >= 0 && m < compteurtaches) {
+        // Décaler les tâches suivantes pour supprimer l'élément
         for (i = m; i < compteurtaches - 1; i++) {
             T[i] = T[i + 1];
         }
-        compteurtaches--;
+        compteurtaches--;  // Réduire le compteur de tâches
+
     } else {
         printf("Numero de tache invalide.\n");
     }
 }
 
+// Fonction pour filtrer les tâches par priorité
 void filtrer() {
     int i;
     char f[20];
@@ -111,9 +123,11 @@ void filtrer() {
     }
 }
 
+// Fonction principale du programme
 int main() {
     int choix;
 
+            // Affichage du menu
     do {
         printf("\n==============MENU================");
         printf("\n1. Ajouter une tache\n");
